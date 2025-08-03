@@ -1,0 +1,782 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <!-- Metadados Essenciais para SEO e Acessibilidade -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PetShop - Cuidado & Carinho: Oferecemos os melhores serviços para o seu pet, incluindo banho e tosa, consultas veterinárias e day care.">
+    <meta name="keywords" content="petshop, banho e tosa, veterinário, cuidado animal, ração, acessórios para pets">
+    <title>PetShop - Cuidado & Carinho | O melhor para seu amigo</title>
+
+    <!-- Importação de Fontes do Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS Embutido -->
+    <style>
+        /* ------------------- */
+        /* Reset e Variáveis   */
+        /* ------------------- */
+        :root {
+            --primary-color: #2a9d8f; /* Verde-azulado moderno */
+            --secondary-color: #e9c46a; /* Amarelo mostarda */
+            --accent-color: #f4a261; /* Laranja claro */
+            --dark-color: #264653; /* Azul escuro */
+            --light-color: #ffffff;
+            --text-color: #333;
+            --bg-light-gray: #f8f9fa;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            --border-radius: 8px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--light-color);
+        }
+
+        /* ------------------- */
+        /* Estilos Gerais      */
+        /* ------------------- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        h1, h2, h3 {
+            color: var(--dark-color);
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--primary-color);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        section {
+            padding: 6rem 0;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: var(--primary-color);
+            color: var(--light-color);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #248a7e; /* Tom mais escuro do primário */
+            transform: translateY(-3px);
+        }
+
+        .btn-secondary {
+            background: var(--accent-color);
+        }
+
+        .btn-secondary:hover {
+            background: #e7904a;
+        }
+
+        /* ------------------- */
+        /* Cabeçalho e Navegação */
+        /* ------------------- */
+        .main-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .navbar .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark-color);
+            text-decoration: none;
+        }
+
+        .navbar .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .navbar .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .navbar .nav-links a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 5px;
+            transition: color 0.3s ease;
+        }
+
+        .navbar .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .navbar .nav-links a:hover,
+        .navbar .nav-links a.active {
+            color: var(--primary-color);
+        }
+
+        .navbar .nav-links a:hover::after,
+        .navbar .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .hamburger .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            background-color: var(--dark-color);
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* ------------------- */
+        /* Seção Início (Hero) */
+        /* ------------------- */
+        #inicio {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            height: 100vh;
+            color: var(--light-color);
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.pexels.com/photos/5749136/pexels-photo-5749136.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+            background-size: cover;
+            background-position: center;
+            padding: 0 2rem;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        /* ------------------- */
+        /* Seção Sobre         */
+        /* ------------------- */
+        #sobre {
+            background-color: var(--bg-light-gray);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-content img {
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        .about-text h3 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* ------------------- */
+        /* Seção Serviços      */
+        /* ------------------- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--light-color);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            padding: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: var(--border-radius);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            color: var(--dark-color);
+        }
+
+        /* ------------------- */
+        /* Seção Clientes      */
+        /* ------------------- */
+        #clientes {
+            background-color: var(--bg-light-gray);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: var(--light-color);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .testimonial-card blockquote {
+            font-style: italic;
+            color: #555;
+            margin-bottom: 1rem;
+            position: relative;
+            padding: 0 1.5rem;
+        }
+
+        .testimonial-card blockquote::before {
+            content: '“';
+            position: absolute;
+            top: -10px;
+            left: 0;
+            font-size: 3rem;
+            color: var(--primary-color);
+            opacity: 0.3;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            margin-top: auto;
+            padding-top: 1rem;
+        }
+
+        .testimonial-author img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 1rem;
+            border: 3px solid var(--primary-color);
+        }
+
+        .author-info p {
+            margin: 0;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+
+        .author-info span {
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        /* ------------------- */
+        /* Seção Contato       */
+        /* ------------------- */
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            background: var(--light-color);
+            padding: 3rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        .contact-info h3, .contact-form h3 {
+            text-align: left;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-info p svg {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            fill: var(--primary-color);
+        }
+
+        .contact-form .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: var(--border-radius);
+            font-family: 'Poppins', sans-serif;
+            transition: border-color 0.3s ease;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 5px rgba(42, 157, 143, 0.5);
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-message {
+            margin-top: 1rem;
+            padding: 0.8rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+            display: none; /* Oculto por padrão */
+        }
+
+        .form-message.success {
+            background-color: #d4edda;
+            color: #155724;
+            display: block;
+        }
+
+        .form-message.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            display: block;
+        }
+
+        /* ------------------- */
+        /* Rodapé              */
+        /* ------------------- */
+        .main-footer {
+            background: var(--dark-color);
+            color: var(--light-color);
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .main-footer .social-links {
+            margin-bottom: 1rem;
+        }
+
+        .main-footer .social-links a {
+            color: var(--light-color);
+            margin: 0 0.5rem;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .main-footer .social-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* ------------------- */
+        /* Responsividade      */
+        /* ------------------- */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+
+            .navbar {
+                position: relative;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: var(--light-color);
+                box-shadow: var(--shadow);
+                text-align: center;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: 1.5rem 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .about-content img {
+                grid-row: 1; /* Imagem aparece primeiro no mobile */
+            }
+
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabeçalho Principal com Navegação -->
+    <header class="main-header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="#inicio" class="logo">PetShop</a>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#clientes">Clientes</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+                <button class="hamburger" id="hamburger" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="nav-links">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Seção de Início (Hero) -->
+        <section id="inicio">
+            <div class="hero-content">
+                <h1>Cuidado e Carinho para seu Melhor Amigo</h1>
+                <p>Oferecemos uma experiência completa para o bem-estar do seu pet, com profissionais apaixonados e a melhor estrutura.</p>
+                <a href="#servicos" class="btn">Conheça Nossos Serviços</a>
+            </div>
+        </section>
+
+        <!-- Seção Sobre Nós -->
+        <section id="sobre">
+            <div class="container">
+                <h2>Nossa Missão é o Bem-Estar Animal</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <h3>Compromisso com a Qualidade e o Amor</h3>
+                        <p>No PetShop, acreditamos que cada animal de estimação merece o melhor. Nossa equipe é formada por especialistas dedicados que tratam cada pet com o carinho e o respeito que eles merecem, como se fossem da nossa própria família.</p>
+                        <p>Nossa missão é clara: promover a saúde, a felicidade e o bem-estar dos animais, oferecendo serviços de alta qualidade, produtos selecionados e um ambiente seguro e acolhedor para eles e seus tutores.</p>
+                        <a href="#contato" class="btn btn-secondary">Fale Conosco</a>
+                    </div>
+                    <div class="about-image">
+                        <img src="https://images.pexels.com/photos/6235233/pexels-photo-6235233.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Veterinária sorrindo enquanto examina um cachorro da raça Golden Retriever.">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Serviços -->
+        <section id="servicos">
+            <div class="container">
+                <h2>Serviços Pensados para Eles</h2>
+                <div class="services-grid">
+                    <!-- Card de Serviço 1 -->
+                    <article class="service-card">
+                        <img src="https://images.pexels.com/photos/731022/pexels-photo-731022.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Cachorro pequeno sendo tosado por um profissional.">
+                        <h3>Banho & Tosa</h3>
+                        <p>Higiene e estética com produtos de primeira linha e profissionais especializados para deixar seu pet limpo, cheiroso e com o visual em dia.</p>
+                    </article>
+                    <!-- Card de Serviço 2 -->
+                    <article class="service-card">
+                        <img src="https://images.pexels.com/photos/6816853/pexels-photo-6816853.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Veterinário auscultando um gato em uma mesa de exame.">
+                        <h3>Consultas Veterinárias</h3>
+                        <p>Cuidado completo com a saúde do seu amigo. Consultas de rotina, vacinação, exames e acompanhamento com médicos veterinários experientes.</p>
+                    </article>
+                    <!-- Card de Serviço 3 -->
+                    <article class="service-card">
+                        <img src="https://images.pexels.com/photos/7210754/pexels-photo-7210754.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Vários cachorros de diferentes raças brincando juntos em um espaço aberto.">
+                        <h3>Day Care & Hotel</h3>
+                        <p>Um espaço seguro e divertido para seu pet socializar e gastar energia enquanto você está fora, sempre com a supervisão de nossa equipe.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Clientes (Depoimentos) -->
+        <section id="clientes">
+            <div class="container">
+                <h2>Quem Ama, Recomenda</h2>
+                <div class="testimonials-grid">
+                    <!-- Depoimento 1 -->
+                    <article class="testimonial-card">
+                        <blockquote>O Thor adora o dia de banho! A equipe é super atenciosa e ele sempre volta pra casa feliz e cheiroso. Melhor petshop da cidade!</blockquote>
+                        <div class="testimonial-author">
+                            <img src="https://images.pexels.com/photos/1805164/pexels-photo-1805164.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Foto do cachorro Thor, um Border Collie.">
+                            <div class="author-info">
+                                <p>Ana Silva</p>
+                                <span>Tutora do Thor</span>
+                            </div>
+                        </div>
+                    </article>
+                    <!-- Depoimento 2 -->
+                    <article class="testimonial-card">
+                        <blockquote>Levei a Mia para uma consulta e fiquei impressionada com o profissionalismo e carinho da veterinária. Cuidaram muito bem dela.</blockquote>
+                        <div class="testimonial-author">
+                            <img src="https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Foto da gata Mia, uma gata branca de olhos azuis.">
+                            <div class="author-info">
+                                <p>Carlos Souza</p>
+                                <span>Tutor da Mia</span>
+                            </div>
+                        </div>
+                    </article>
+                    <!-- Depoimento 3 -->
+                    <article class="testimonial-card">
+                        <blockquote>O day care é a salvação! O Bob volta exausto e feliz. A estrutura é fantástica e os cuidadores são incríveis. Recomendo de olhos fechados.</blockquote>
+                        <div class="testimonial-author">
+                            <img src="https://images.pexels.com/photos/2253275/pexels-photo-2253275.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Foto do cachorro Bob, um Pug.">
+                            <div class="author-info">
+                                <p>Juliana Pereira</p>
+                                <span>Tutora do Bob</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Contato -->
+        <section id="contato">
+            <div class="container">
+                <h2>Entre em Contato</h2>
+                <div class="contact-wrapper">
+                    <div class="contact-info">
+                        <h3>Fale Conosco</h3>
+                        <p>Estamos prontos para atender você e seu pet. Venha nos visitar ou envie uma mensagem!</p>
+                        <p>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C7.589 2 4 5.589 4 10c0 6.5 8 12 8 12s8-5.5 8-12c0-4.411-3.589-8-8-8zm0 12c-2.206 0-4-1.794-4-4s1.794-4 4-4 4 1.794 4 4-1.794 4-4 4z"></path></svg>
+                            Rua dos Pets Felizes, 123 - Bairro Animal
+                        </p>
+                        <p>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4H4c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm0 2v.511l-8 6.223-8-6.223V6h16zM4 18V9.044l7.386 5.762a.998.998 0 0 0 1.228 0L20 9.044V18H4z"></path></svg>
+                            contato@petshop.com.br
+                        </p>
+                        <p>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.707 12.293a.999.999 0 0 0-1.414 0l-1.594 1.594c-.739-.22-2.118-.72-3.333-1.934-1.215-1.215-1.714-2.594-1.934-3.333l1.594-1.594a.999.999 0 0 0 0-1.414l-4-4a.999.999 0 0 0-1.414 0L3.705 3.707a.999.999 0 0 0-.293.707v.002c0 3.512 1.279 6.738 3.651 9.11 2.372 2.372 5.598 3.651 9.11 3.651h.002a.999.999 0 0 0 .707-.293l2.828-2.828a.999.999 0 0 0 0-1.414l-4-4.001z"></path></svg>
+                            (11) 98765-4321
+                        </p>
+                    </div>
+                    <div class="contact-form">
+                        <h3>Envie uma Mensagem</h3>
+                        <form id="contact-form" novalidate>
+                            <div class="form-group">
+                                <label for="name">Seu Nome</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Seu E-mail</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Sua Mensagem</label>
+                                <textarea id="message" name="message" required></textarea>
+                            </div>
+                            <button type="submit" class="btn">Enviar</button>
+                        </form>
+                        <div id="form-message" class="form-message"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="social-links">
+                <!-- Ícones SVG simples para redes sociais -->
+                <a href="#" aria-label="Link para o Instagram"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.2,5.2 0 0,1 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.2,5.2 0 0,1 7.8,2M7.6,4A3.6,3.6 0 0,0 4,7.6V16.4C4,18.39 5.61,20 7.6,20H16.4A3.6,3.6 0 0,0 20,16.4V7.6C20,5.61 18.39,4 16.4,4H7.6M17.25,5.5A1.25,1.25 0 0,1 18.5,6.75A1.25,1.25 0 0,1 17.25,8A1.25,1.25 0 0,1 16,6.75A1.25,1.25 0 0,1 17.25,5.5M12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9Z" /></svg></a>
+                <a href="#" aria-label="Link para o Facebook"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.04C6.5 2.04 2 6.53 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.81C10.44 7.31 11.93 5.96 14.22 5.96C15.31 5.96 16.45 6.15 16.45 6.15V8.62H15.19C13.95 8.62 13.56 9.39 13.56 10.18V12.06H16.34L15.89 14.96H13.56V21.96A10 10 0 0 0 12 2.04Z" /></svg></a>
+            </div>
+            <p>&copy; 2024 PetShop - Cuidado & Carinho. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Incorporado -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- Funcionalidade do Menu Hambúrguer ---
+            const hamburger = document.getElementById('hamburger');
+            const navLinks = document.getElementById('nav-links');
+
+            hamburger.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                hamburger.classList.toggle('active');
+
+                // Atualiza atributos de acessibilidade ARIA
+                const isExpanded = navLinks.classList.contains('active');
+                hamburger.setAttribute('aria-expanded', isExpanded);
+            });
+
+            // Fecha o menu ao clicar em um link (para navegação em página única)
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        hamburger.classList.remove('active');
+                        hamburger.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            });
+
+            // --- Validação do Formulário de Contato ---
+            const contactForm = document.getElementById('contact-form');
+            const formMessage = document.getElementById('form-message');
+
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault(); // Impede o envio real do formulário
+
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const message = document.getElementById('message').value.trim();
+
+                formMessage.className = 'form-message'; // Reseta as classes
+                formMessage.textContent = '';
+
+                if (name === '' || email === '' || message === '') {
+                    formMessage.textContent = 'Por favor, preencha todos os campos.';
+                    formMessage.classList.add('error');
+                    return;
+                }
+
+                // Simples validação de e-mail
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailPattern.test(email)) {
+                    formMessage.textContent = 'Por favor, insira um e-mail válido.';
+                    formMessage.classList.add('error');
+                    return;
+                }
+
+                // Se tudo estiver OK (simulação de sucesso)
+                formMessage.textContent = 'Mensagem enviada com sucesso! Entraremos em contato em breve.';
+                formMessage.classList.add('success');
+
+                // Limpa o formulário após o "envio"
+                contactForm.reset();
+
+                // Esconde a mensagem após alguns segundos
+                setTimeout(() => {
+                    formMessage.style.display = 'none';
+                }, 5000);
+            });
+        });
+    </script>
+
+</body>
+</html>
+```

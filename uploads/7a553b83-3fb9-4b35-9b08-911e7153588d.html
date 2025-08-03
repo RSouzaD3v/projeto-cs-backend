@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <!-- Metadados Essenciais para SEO e Responsividade -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ditho Soft | Soluções Tecnológicas Inovadoras</title>
+    <meta name="description" content="A Ditho Soft é especializada em desenvolvimento de software, soluções em nuvem e consultoria de TI, transformando ideias em realidade digital.">
+    <meta name="keywords" content="desenvolvimento de software, tecnologia, inovação, aplicativos, soluções em nuvem, Ditho Soft">
+    <meta name="author" content="Ditho Soft">
+
+    <!-- Google Fonts para um design moderno -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS Embutido -->
+    <style>
+        /* 1. Variáveis e Estilos Base */
+        :root {
+            --primary-color: #00A8E8; /* Azul ciano vibrante */
+            --secondary-color: #007EA7;
+            --bg-color: #12181b; /* Fundo escuro */
+            --surface-color: #1a2226; /* Cor para cards e superfícies */
+            --text-color: #f0f0f0; /* Texto claro */
+            --text-muted-color: #a0a0a0; /* Texto secundário */
+            --border-color: #2a3439;
+            --success-color: #28a745;
+            --error-color: #dc3545;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* 2. Utilitários e Componentes Reutilizáveis */
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        h1, h2, h3 {
+            color: var(--text-color);
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        h1 { font-size: 3rem; }
+        h2 { font-size: 2.2rem; text-align: center; margin-bottom: 3rem; }
+        h3 { font-size: 1.5rem; color: var(--primary-color); }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-muted-color);
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover, a:focus-visible {
+            color: var(--secondary-color);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            background-color: var(--primary-color);
+            color: #fff;
+            border-radius: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 2px solid var(--primary-color);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn:hover, .btn:focus-visible {
+            background-color: transparent;
+            color: var(--primary-color);
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        /* 3. Cabeçalho e Navegação */
+        .main-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(18, 24, 27, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 0;
+        }
+
+        .main-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-color);
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        .main-nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        .main-nav a {
+            color: var(--text-color);
+            font-weight: 400;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .main-nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .main-nav a:hover::after, .main-nav a:focus-visible::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .menu-toggle .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            background-color: var(--text-color);
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* 4. Seção Início (Hero) */
+        #inicio {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            padding-top: 80px; /* Espaço para o header fixo */
+        }
+
+        #inicio .container {
+            max-width: 800px;
+        }
+
+        #inicio h1 {
+            margin-bottom: 1.5rem;
+        }
+
+        #inicio p {
+            font-size: 1.2rem;
+            color: var(--text-muted-color);
+            margin-bottom: 2.5rem;
+        }
+
+        /* 5. Seções Sobre, Serviços, Portfólio, Contato */
+        .grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        /* Sobre */
+        #sobre .grid {
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+        }
+
+        #sobre img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 10px;
+            justify-self: center;
+        }
+
+        /* Serviços e Portfólio */
+        .card {
+            background-color: var(--surface-color);
+            padding: 2rem;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 168, 232, 0.1);
+        }
+
+        #servicos .grid {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        #portfolio .grid {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .portfolio-content {
+            padding: 1.5rem;
+        }
+
+        /* Contato */
+        #contato .grid {
+            grid-template-columns: 1fr 1fr;
+            align-items: flex-start;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-form label {
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-muted-color);
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            padding: 0.8rem;
+            color: var(--text-color);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .contact-info p {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-message {
+            padding: 1rem;
+            border-radius: 5px;
+            margin-top: 1rem;
+            text-align: center;
+            display: none; /* Oculto por padrão */
+        }
+        .form-message.success {
+            background-color: var(--success-color);
+            color: #fff;
+        }
+        .form-message.error {
+            background-color: var(--error-color);
+            color: #fff;
+        }
+
+        /* 6. Rodapé */
+        .main-footer {
+            background-color: var(--surface-color);
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .main-footer p {
+            margin: 0;
+            color: var(--text-muted-color);
+        }
+
+        /* 7. Responsividade (Media Queries) */
+        @media (max-width: 992px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+
+            #sobre .grid, #contato .grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            #sobre img {
+                max-width: 350px;
+                margin-bottom: 2rem;
+                order: -1; /* Imagem vai para cima */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .main-nav {
+                position: fixed;
+                top: 0;
+                right: -100%; /* Começa fora da tela */
+                width: 70%;
+                height: 100vh;
+                background-color: var(--surface-color);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: right 0.4s ease-in-out;
+                display: flex;
+            }
+
+            .main-nav.active {
+                right: 0; /* Entra na tela */
+            }
+
+            .main-nav ul {
+                flex-direction: column;
+                text-align: center;
+                gap: 2.5rem;
+            }
+
+            .main-nav a {
+                font-size: 1.2rem;
+            }
+
+            /* Animação do Hamburguer para 'X' */
+            .menu-toggle.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+            .menu-toggle.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+            .menu-toggle.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+
+            section {
+                padding: 4rem 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                width: 95%;
+            }
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.8rem; margin-bottom: 2rem; }
+            .btn { padding: 0.7rem 1.5rem; font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabeçalho Principal -->
+    <header class="main-header">
+        <div class="container">
+            <a href="#inicio" class="logo">Ditho<span>Soft</span></a>
+            
+            <!-- Navegação Principal -->
+            <nav class="main-nav" id="main-nav">
+                <ul>
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#portfolio">Portfólio</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+
+            <!-- Botão de Menu para Telas Pequenas (Hamburguer) -->
+            <button class="menu-toggle" id="menu-toggle" aria-controls="main-nav" aria-expanded="false" aria-label="Abrir menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Conteúdo Principal do Site -->
+    <main>
+
+        <!-- Seção de Início (Hero) -->
+        <section id="inicio">
+            <div class="container">
+                <h1>Transformando Ideias em Realidade Digital</h1>
+                <p>Soluções tecnológicas inovadoras para impulsionar o seu negócio. Na Ditho Soft, criamos o futuro, hoje.</p>
+                <a href="#servicos" class="btn">Conheça Nossos Serviços</a>
+            </div>
+        </section>
+
+        <!-- Seção Sobre Nós -->
+        <section id="sobre">
+            <div class="container">
+                <h2>Sobre a Ditho Soft</h2>
+                <div class="grid">
+                    <div class="about-content">
+                        <h3>Nossa Missão</h3>
+                        <p>Nossa missão é fornecer soluções tecnológicas inovadoras que capacitam nossos clientes a alcançar seu pleno potencial. Acreditamos no poder da tecnologia para resolver problemas complexos e criar oportunidades de crescimento.</p>
+                        <h3>Nossa Visão</h3>
+                        <p>Ser uma empresa líder em inovação tecnológica, reconhecida pela excelência de nossos produtos, pelo compromisso com nossos clientes e pela paixão em transformar o cenário digital.</p>
+                        <a href="#contato" class="btn">Fale Conosco</a>
+                    </div>
+                    <img src="https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Equipe da Ditho Soft colaborando em um projeto de tecnologia em um escritório moderno.">
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Serviços -->
+        <section id="servicos">
+            <div class="container">
+                <h2>Nossos Serviços</h2>
+                <div class="grid">
+                    <!-- Card de Serviço 1 -->
+                    <article class="card">
+                        <div class="service-icon">💻</div>
+                        <h3>Desenvolvimento Web</h3>
+                        <p>Criamos websites e aplicações web responsivas, rápidas e seguras, utilizando as tecnologias mais modernas do mercado para garantir a melhor experiência ao usuário.</p>
+                    </article>
+                    <!-- Card de Serviço 2 -->
+                    <article class="card">
+                        <div class="service-icon">📱</div>
+                        <h3>Aplicativos Mobile</h3>
+                        <p>Desenvolvemos aplicativos nativos e híbridos para iOS e Android, focados em usabilidade, performance e design intuitivo para engajar seus clientes.</p>
+                    </article>
+                    <!-- Card de Serviço 3 -->
+                    <article class="card">
+                        <div class="service-icon">☁️</div>
+                        <h3>Soluções em Nuvem</h3>
+                        <p>Oferecemos consultoria e implementação de infraestrutura em nuvem (AWS, Azure, Google Cloud), otimizando custos, escalabilidade e segurança para sua empresa.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Portfólio -->
+        <section id="portfolio">
+            <div class="container">
+                <h2>Nosso Portfólio</h2>
+                <div class="grid">
+                    <!-- Item do Portfólio 1 -->
+                    <article class="card">
+                        <img src="https://images.pexels.com/photos/4164418/pexels-photo-4164418.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Tela de um sistema de gestão financeira desenvolvido pela Ditho Soft.">
+                        <div class="portfolio-content">
+                            <h3>Sistema de Gestão Financeira</h3>
+                            <p>Plataforma web completa para controle de fluxo de caixa, relatórios e projeções financeiras para pequenas e médias empresas.</p>
+                        </div>
+                    </article>
+                    <!-- Item do Portfólio 2 -->
+                    <article class="card">
+                        <img src="https://images.pexels.com/photos/6476254/pexels-photo-6476254.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Interface de um aplicativo de e-commerce em um smartphone.">
+                        <div class="portfolio-content">
+                            <h3>App de E-commerce</h3>
+                            <p>Aplicativo móvel para uma grande varejista, com foco em experiência de compra personalizada e integração com o sistema de estoque.</p>
+                        </div>
+                    </article>
+                    <!-- Item do Portfólio 3 -->
+                    <article class="card">
+                        <img src="https://images.pexels.com/photos/5775854/pexels-photo-5775854.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Dashboard de análise de dados de uma plataforma de Big Data.">
+                        <div class="portfolio-content">
+                            <h3>Plataforma de Análise de Dados</h3>
+                            <p>Solução em nuvem para processamento e visualização de grandes volumes de dados, ajudando clientes a tomar decisões estratégicas.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Contato -->
+        <section id="contato">
+            <div class="container">
+                <h2>Entre em Contato</h2>
+                <div class="grid">
+                    <div class="contact-info">
+                        <h3>Vamos conversar sobre seu projeto?</h3>
+                        <p>Estamos prontos para ouvir suas ideias e transformá-las em soluções tecnológicas de sucesso. Preencha o formulário ao lado ou utilize um de nossos canais de contato.</p>
+                        <p><strong>Email:</strong> contato@dithosoft.com</p>
+                        <p><strong>Telefone:</strong> (11) 99999-8888</p>
+                        <p><strong>Endereço:</strong> Av. da Tecnologia, 123, São Paulo - SP</p>
+                    </div>
+                    
+                    <!-- Formulário de Contato -->
+                    <form id="contact-form" class="contact-form" novalidate>
+                        <div class="form-group">
+                            <label for="name">Nome Completo</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Sua Mensagem</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Enviar Mensagem</button>
+                        <div id="form-message" class="form-message"></div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2024 Ditho Soft. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Incorporado -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // --- Lógica do Menu Responsivo ---
+            const menuToggle = document.getElementById('menu-toggle');
+            const mainNav = document.getElementById('main-nav');
+            const navLinks = mainNav.querySelectorAll('a');
+
+            if (menuToggle && mainNav) {
+                menuToggle.addEventListener('click', function() {
+                    mainNav.classList.toggle('active');
+                    const isExpanded = mainNav.classList.contains('active');
+                    menuToggle.setAttribute('aria-expanded', isExpanded);
+                    menuToggle.classList.toggle('active');
+                });
+            }
+
+            // Fecha o menu ao clicar em um link (para navegação na mesma página)
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (mainNav.classList.contains('active')) {
+                        mainNav.classList.remove('active');
+                        menuToggle.classList.remove('active');
+                        menuToggle.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            });
+
+            // --- Lógica de Validação do Formulário de Contato ---
+            const contactForm = document.getElementById('contact-form');
+            const formMessage = document.getElementById('form-message');
+
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(event) {
+                    event.preventDefault(); // Impede o envio padrão do formulário
+
+                    const name = document.getElementById('name').value.trim();
+                    const email = document.getElementById('email').value.trim();
+                    const message = document.getElementById('message').value.trim();
+                    
+                    formMessage.style.display = 'block';
+                    formMessage.classList.remove('success', 'error');
+
+                    if (name === '' || email === '' || message === '') {
+                        formMessage.textContent = 'Por favor, preencha todos os campos.';
+                        formMessage.classList.add('error');
+                        return;
+                    }
+
+                    if (!validateEmail(email)) {
+                        formMessage.textContent = 'Por favor, insira um e-mail válido.';
+                        formMessage.classList.add('error');
+                        return;
+                    }
+
+                    // Simulação de envio bem-sucedido
+                    formMessage.textContent = 'Mensagem enviada com sucesso! Entraremos em contato em breve.';
+                    formMessage.classList.add('success');
+                    
+                    // Limpa o formulário após o "envio"
+                    contactForm.reset();
+
+                    // Esconde a mensagem após alguns segundos
+                    setTimeout(() => {
+                        formMessage.style.display = 'none';
+                    }, 5000);
+                });
+            }
+
+            // Função auxiliar para validar e-mail
+            function validateEmail(email) {
+                const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                return re.test(String(email).toLowerCase());
+            }
+
+        });
+    </script>
+
+</body>
+</html>

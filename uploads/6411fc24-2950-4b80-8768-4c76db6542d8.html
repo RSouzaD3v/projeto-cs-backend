@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <!-- Metadados Essenciais para SEO e Compatibilidade -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Barber Rafael oferece cortes de cabelo e barba com estilo moderno. Agende seu horário e descubra a melhor experiência em barbearia.">
+    <meta name="keywords" content="barbearia, barber shop, Barber Rafael, corte de cabelo masculino, barba, bigode, estilo moderno, agendamento">
+    <meta name="author" content="Barber Rafael">
+
+    <!-- Título da Página -->
+    <title>Barber Rafael - Barbearia Moderna</title>
+
+    <!-- Google Fonts para um visual moderno -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS Embutido -->
+    <style>
+        /* 1. Reset e Configurações Globais */
+        :root {
+            --cor-primaria: #121212; /* Preto quase absoluto */
+            --cor-secundaria: #1E1E1E; /* Cinza escuro para cards */
+            --cor-texto: #E0E0E0; /* Branco suave */
+            --cor-destaque: #D4AF37; /* Dourado moderno */
+            --cor-destaque-hover: #C09E32; /* Dourado mais escuro */
+            --cor-borda: #333333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--cor-primaria);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        h1, h2, h3 {
+            font-weight: 600;
+            color: #fff;
+        }
+
+        h2 {
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--cor-destaque);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        /* 2. Cabeçalho e Navegação */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px 0;
+            z-index: 1000;
+            transition: background-color 0.3s ease;
+            background-color: rgba(18, 18, 18, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--cor-destaque);
+        }
+
+        .nav-list {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--cor-texto);
+            font-weight: 400;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--cor-destaque);
+        }
+
+        .hamburger-menu {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .hamburger-menu .bar {
+            width: 25px;
+            height: 3px;
+            background-color: #fff;
+            border-radius: 5px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* 3. Seção Início (Hero) */
+        #inicio {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.pexels.com/photos/3998414/pexels-photo-3998414.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 0 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            font-weight: 300;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 35px;
+            background-color: var(--cor-destaque);
+            color: var(--cor-primaria);
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .cta-button:hover {
+            background-color: var(--cor-destaque-hover);
+            transform: translateY(-3px);
+        }
+
+        /* 4. Seção Sobre */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-image {
+            flex: 1;
+        }
+
+        .about-image img {
+            width: 100%;
+            max-width: 450px;
+            height: auto;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--cor-destaque);
+        }
+
+        .about-text p {
+            font-weight: 300;
+            margin-bottom: 15px;
+        }
+
+        /* 5. Seção Serviços */
+        #servicos {
+            background-color: var(--cor-secundaria);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: var(--cor-primaria);
+            padding: 40px 30px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid var(--cor-borda);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--cor-destaque);
+        }
+
+        .service-card p {
+            font-weight: 300;
+            margin-bottom: 20px;
+        }
+
+        .service-price {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        /* 6. Seção Contato */
+        .contact-wrapper {
+            display: flex;
+            gap: 50px;
+            background-color: var(--cor-secundaria);
+            padding: 50px;
+            border-radius: 8px;
+        }
+
+        .contact-info, .contact-form {
+            flex: 1;
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--cor-destaque);
+        }
+
+        .contact-info p {
+            margin-bottom: 15px;
+        }
+
+        .contact-form form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid var(--cor-borda);
+            background-color: var(--cor-primaria);
+            color: var(--cor-texto);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--cor-destaque);
+        }
+
+        /* 7. Rodapé */
+        .footer {
+            background-color: var(--cor-secundaria);
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid var(--cor-borda);
+        }
+
+        .footer p {
+            font-weight: 300;
+            font-size: 0.9rem;
+        }
+
+        /* 8. Responsividade */
+        @media (max-width: 992px) {
+            h2 { font-size: 2.4rem; }
+            .hero-content h1 { font-size: 3rem; }
+            .about-content { flex-direction: column; }
+            .contact-wrapper { flex-direction: column; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-list {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background-color: var(--cor-secundaria);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 40px;
+                transition: right 0.5s ease-in-out;
+            }
+
+            .nav-list.nav-active {
+                right: 0;
+            }
+
+            .nav-link {
+                font-size: 1.2rem;
+            }
+
+            .hamburger-menu {
+                display: flex;
+                z-index: 1001; /* Para ficar acima do menu */
+            }
+
+            .hamburger-menu.toggle .bar:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+            .hamburger-menu.toggle .bar:nth-child(2) {
+                opacity: 0;
+            }
+            .hamburger-menu.toggle .bar:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+
+            h2 { font-size: 2rem; }
+            .hero-content h1 { font-size: 2.5rem; }
+            .hero-content p { font-size: 1rem; }
+            section { padding: 80px 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Início do Cabeçalho -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <!-- Logo da Empresa -->
+                <a href="#inicio" class="logo">Barber<span>Rafael</span></a>
+                
+                <!-- Lista de Navegação Principal -->
+                <ul class="nav-list" id="navList">
+                    <li><a href="#inicio" class="nav-link">Início</a></li>
+                    <li><a href="#sobre" class="nav-link">Sobre</a></li>
+                    <li><a href="#servicos" class="nav-link">Serviços</a></li>
+                    <li><a href="#contato" class="nav-link">Contato</a></li>
+                </ul>
+
+                <!-- Menu Hamburger para Telas Menores -->
+                <div class="hamburger-menu" id="hamburgerMenu" role="button" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="navList">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <!-- Fim do Cabeçalho -->
+
+    <!-- Início do Conteúdo Principal -->
+    <main>
+
+        <!-- Seção de Início (Hero Section) -->
+        <section id="inicio">
+            <div class="hero-content">
+                <h1>O Estilo Define o Homem</h1>
+                <p>Descubra a arte da barbearia moderna, onde tradição e inovação se encontram para criar o seu visual perfeito.</p>
+                <a href="#contato" class="cta-button">Agende seu Horário</a>
+            </div>
+        </section>
+
+        <!-- Seção Sobre Nós -->
+        <section id="sobre" class="container">
+            <h2>Nossa Barbearia</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="https://images.pexels.com/photos/2061820/pexels-photo-2061820.jpeg" alt="Interior moderno da barbearia Barber Rafael com cadeiras de couro e espelhos iluminados.">
+                </div>
+                <div class="about-text">
+                    <h3>Bem-vindo à Barber Rafael</h3>
+                    <p>Nossa missão é oferecer uma experiência de barbearia premium, combinando técnicas tradicionais com um toque moderno. Nos dedicamos a realçar o estilo de cada cliente em um ambiente acolhedor e profissional, garantindo sempre a máxima qualidade e satisfação.</p>
+                    <p>Utilizamos os melhores produtos do mercado e nossos profissionais estão em constante atualização para trazer as últimas tendências e técnicas para você.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Serviços -->
+        <section id="servicos">
+            <div class="container">
+                <h2>Nossos Serviços</h2>
+                <div class="services-grid">
+                    <!-- Card de Serviço 1 -->
+                    <div class="service-card">
+                        <h3>Corte Moderno</h3>
+                        <p>Do clássico ao contemporâneo, nossos especialistas criam o corte ideal para o seu estilo e tipo de cabelo.</p>
+                        <div class="service-price">R$ 50</div>
+                    </div>
+                    <!-- Card de Serviço 2 -->
+                    <div class="service-card">
+                        <h3>Barba Terapia</h3>
+                        <p>Um tratamento completo para sua barba com toalha quente, óleos essenciais e modelagem precisa.</p>
+                        <div class="service-price">R$ 40</div>
+                    </div>
+                    <!-- Card de Serviço 3 -->
+                    <div class="service-card">
+                        <h3>Combo (Corte + Barba)</h3>
+                        <p>A experiência completa para um visual impecável. Economize com nosso pacote mais popular.</p>
+                        <div class="service-price">R$ 80</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Contato -->
+        <section id="contato" class="container">
+            <h2>Entre em Contato</h2>
+            <div class="contact-wrapper">
+                <!-- Informações de Contato -->
+                <div class="contact-info">
+                    <h3>Agende seu horário ou tire suas dúvidas!</h3>
+                    <p>Estamos prontos para atender você. Entre em contato por telefone, WhatsApp ou preencha o formulário ao lado.</p>
+                    <p><strong>Telefone:</strong> (11) 98765-4321</p>
+                    <p><strong>Endereço:</strong> Rua do Estilo, 123 - Centro, São Paulo - SP</p>
+                    <p><strong>Horário:</strong> Terça a Sábado, das 9h às 20h</p>
+                </div>
+                <!-- Formulário de Contato -->
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="Seu Nome" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Seu E-mail" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" rows="5" placeholder="Sua Mensagem" required></textarea>
+                        </div>
+                        <button type="submit" class="cta-button">Enviar Mensagem</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    <!-- Fim do Conteúdo Principal -->
+
+    <!-- Início do Rodapé -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Barber Rafael. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+    <!-- Fim do Rodapé -->
+
+    <!-- JavaScript Incorporado -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // Funcionalidade do Menu Hamburger Responsivo
+            const hamburgerMenu = document.getElementById('hamburgerMenu');
+            const navList = document.getElementById('navList');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            if (hamburgerMenu && navList) {
+                hamburgerMenu.addEventListener('click', () => {
+                    // Animação do menu e do ícone
+                    navList.classList.toggle('nav-active');
+                    hamburgerMenu.classList.toggle('toggle');
+
+                    // Atualiza atributos ARIA para acessibilidade
+                    const isExpanded = navList.classList.contains('nav-active');
+                    hamburgerMenu.setAttribute('aria-expanded', isExpanded);
+                });
+
+                // Fecha o menu ao clicar em um link (melhora a experiência do usuário em mobile)
+                navLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        if (navList.classList.contains('nav-active')) {
+                            navList.classList.remove('nav-active');
+                            hamburgerMenu.classList.remove('toggle');
+                            hamburgerMenu.setAttribute('aria-expanded', 'false');
+                        }
+                    });
+                });
+            }
+
+            // Validação Básica do Formulário de Contato
+            const contactForm = document.getElementById('contactForm');
+
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(event) {
+                    event.preventDefault(); // Impede o envio padrão do formulário
+
+                    const name = document.getElementById('name').value.trim();
+                    const email = document.getElementById('email').value.trim();
+                    const message = document.getElementById('message').value.trim();
+
+                    if (name === '' || email === '' || message === '') {
+                        alert('Por favor, preencha todos os campos.');
+                        return;
+                    }
+
+                    // Simulação de envio bem-sucedido
+                    alert(`Obrigado, ${name}! Sua mensagem foi enviada com sucesso.`);
+                    
+                    // Limpa o formulário após o "envio"
+                    contactForm.reset();
+                });
+            }
+
+        });
+    </script>
+
+</body>
+</html>

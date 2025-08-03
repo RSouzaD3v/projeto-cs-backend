@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <!-- Metatags Essenciais para SEO e Responsividade -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PetShop - Oferecemos o melhor cuidado para o seu pet, com serviços de banho e tosa, veterinário, e produtos de alta qualidade.">
+    <meta name="keywords" content="petshop, banho e tosa, veterinário, ração, cachorro, gato, cuidado animal">
+    <title>PetShop - Cuidando do seu melhor amigo</title>
+
+    <!-- Importação de Fontes do Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS Embutido -->
+    <style>
+        /* ------------------- */
+        /*  Variáveis e Reset  */
+        /* ------------------- */
+        :root {
+            --primary-color: #0077b6; /* Azul moderno e confiável */
+            --secondary-color: #fca311; /* Laranja vibrante e amigável */
+            --text-color: #333333;
+            --light-text-color: #ffffff;
+            --bg-color: #f8f9fa;
+            --white-color: #ffffff;
+            --dark-color: #14213d;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            line-height: 1.6;
+        }
+
+        /* ------------------- */
+        /*  Estilos Gerais     */
+        /* ------------------- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h1, h2, h3 {
+            color: var(--dark-color);
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--secondary-color);
+            color: var(--white-color);
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: var(--border-radius);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #e8920a;
+            transform: translateY(-2px);
+        }
+
+        /* Acessibilidade: Estilo de foco visível */
+        a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+            outline: 3px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+
+        /* ------------------- */
+        /*  Cabeçalho e Navegação */
+        /* ------------------- */
+        .main-header {
+            background-color: var(--white-color);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .main-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after, .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .hamburger-menu {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .hamburger-menu .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            background-color: var(--dark-color);
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* ------------------- */
+        /*  Seção Início (Hero) */
+        /* ------------------- */
+        #inicio {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://loremflickr.com/1600/900/happy-dog,pet?lock=1') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white-color);
+            padding: 0 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--white-color);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ------------------- */
+        /*  Seção Sobre        */
+        /* ------------------- */
+        #sobre .container {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .about-content {
+            flex: 1;
+        }
+
+        .about-image {
+            flex: 1;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        /* ------------------- */
+        /*  Seção Serviços     */
+        /* ------------------- */
+        #servicos {
+            background-color: var(--white-color);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: var(--bg-color);
+            padding: 30px;
+            text-align: center;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-card .icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+        }
+
+        /* ------------------- */
+        /*  Seção Clientes     */
+        /* ------------------- */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background-color: var(--white-color);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-card .author {
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+
+        .testimonial-card img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            float: left;
+            margin-right: 15px;
+        }
+
+        /* ------------------- */
+        /*  Seção Contato      */
+        /* ------------------- */
+        #contato {
+            background-color: var(--white-color);
+        }
+
+        .contact-wrapper {
+            display: flex;
+            gap: 60px;
+        }
+
+        .contact-form {
+            flex: 2;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: var(--border-radius);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 20px;
+        }
+
+        .contact-info p {
+            margin-bottom: 10px;
+        }
+
+        /* ------------------- */
+        /*  Rodapé             */
+        /* ------------------- */
+        .main-footer {
+            background-color: var(--dark-color);
+            color: var(--light-text-color);
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        /* ------------------- */
+        /*  Responsividade     */
+        /* ------------------- */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            h2 {
+                font-size: 2rem;
+            }
+            
+            /* Navegação Mobile */
+            .nav-links {
+                position: fixed;
+                left: -100%;
+                top: 70px; /* Altura do header */
+                flex-direction: column;
+                background-color: var(--white-color);
+                width: 100%;
+                height: calc(100vh - 70px);
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 2.5rem 0;
+            }
+
+            .hamburger-menu {
+                display: block;
+            }
+
+            .hamburger-menu.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger-menu.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+
+            .hamburger-menu.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+
+            /* Seções */
+            #sobre .container, .contact-wrapper {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabeçalho Principal -->
+    <header class="main-header">
+        <div class="container">
+            <!-- Logo da Empresa -->
+            <a href="#inicio" class="logo">PetShop</a>
+            
+            <!-- Navegação Principal -->
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#clientes">Clientes</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+
+            <!-- Botão do Menu Hamburger para Telas Menores -->
+            <button class="hamburger-menu" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="nav-links">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Seção de Início (Hero) -->
+        <section id="inicio">
+            <div class="hero-content">
+                <h1>Cuidado e Carinho para seu Melhor Amigo</h1>
+                <p>Oferecemos uma experiência completa de bem-estar para o seu pet, com profissionais apaixonados e a melhor estrutura.</p>
+                <a href="#servicos" class="btn">Conheça Nossos Serviços</a>
+            </div>
+        </section>
+
+        <!-- Seção Sobre Nós -->
+        <section id="sobre">
+            <div class="container">
+                <div class="about-content">
+                    <h2>Nossa Missão</h2>
+                    <p>No PetShop, nossa paixão são os animais. Acreditamos que cada pet merece ser tratado com amor, respeito e o máximo de cuidado. Nossa missão é oferecer serviços e produtos de alta qualidade que promovam a saúde, a felicidade e o bem-estar do seu companheiro, fortalecendo o laço especial que vocês compartilham.</p>
+                    <p>Contamos com uma equipe dedicada e uma infraestrutura moderna para garantir que seu melhor amigo esteja sempre em boas mãos.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://loremflickr.com/500/500/veterinarian,dog?lock=2" alt="Veterinária sorrindo enquanto examina um cachorro da raça Golden Retriever.">
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Serviços -->
+        <section id="servicos">
+            <div class="container">
+                <h2>O que Oferecemos</h2>
+                <div class="services-grid">
+                    <!-- Card de Serviço 1 -->
+                    <div class="service-card">
+                        <div class="icon">🛁</div>
+                        <h3>Banho & Tosa</h3>
+                        <p>Higiene e estética com produtos de primeira linha, realizados por profissionais experientes e carinhosos.</p>
+                    </div>
+                    <!-- Card de Serviço 2 -->
+                    <div class="service-card">
+                        <div class="icon">🩺</div>
+                        <h3>Consultas Veterinárias</h3>
+                        <p>Cuidado completo com a saúde do seu pet, desde check-ups de rotina até diagnósticos complexos.</p>
+                    </div>
+                    <!-- Card de Serviço 3 -->
+                    <div class="service-card">
+                        <div class="icon">💉</div>
+                        <h3>Vacinação</h3>
+                        <p>Mantenha a carteira de vacinação do seu amigo em dia e proteja-o contra diversas doenças.</p>
+                    </div>
+                    <!-- Card de Serviço 4 -->
+                    <div class="service-card">
+                        <div class="icon">🏨</div>
+                        <h3>Hotel para Pets</h3>
+                        <p>Um espaço seguro, divertido e confortável para seu pet ficar enquanto você viaja com tranquilidade.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Clientes (Depoimentos) -->
+        <section id="clientes">
+            <div class="container">
+                <h2>O que Nossos Clientes Dizem</h2>
+                <div class="testimonials-grid">
+                    <!-- Depoimento 1 -->
+                    <div class="testimonial-card">
+                        <img src="https://loremflickr.com/150/150/woman,portrait?lock=3" alt="Foto de perfil de Ana S.">
+                        <p>"Atendimento impecável! O Bob voltou do banho super cheiroso e feliz. A equipe é muito atenciosa e demonstra um carinho genuíno pelos animais."</p>
+                        <span class="author">Ana S., tutora do Bob</span>
+                    </div>
+                    <!-- Depoimento 2 -->
+                    <div class="testimonial-card">
+                        <img src="https://loremflickr.com/150/150/man,portrait?lock=4" alt="Foto de perfil de Carlos M.">
+                        <p>"Levei minha gatinha, a Luna, para uma consulta e fiquei impressionado com o profissionalismo da veterinária. Explicou tudo com clareza e paciência."</p>
+                        <span class="author">Carlos M., tutor da Luna</span>
+                    </div>
+                    <!-- Depoimento 3 -->
+                    <div class="testimonial-card">
+                        <img src="https://loremflickr.com/150/150/person,portrait?lock=5" alt="Foto de perfil de Juliana P.">
+                        <p>"O hotelzinho é fantástico! Deixei o Thor por uma semana e recebi fotos e atualizações diárias. Ele se divertiu muito. Recomendo de olhos fechados!"</p>
+                        <span class="author">Juliana P., tutora do Thor</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Contato -->
+        <section id="contato">
+            <div class="container">
+                <h2>Entre em Contato</h2>
+                <div class="contact-wrapper">
+                    <!-- Formulário de Contato -->
+                    <div class="contact-form">
+                        <form action="#" method="POST">
+                            <div class="form-group">
+                                <label for="name">Nome</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Mensagem</label>
+                                <textarea id="message" name="message" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn">Enviar Mensagem</button>
+                        </form>
+                    </div>
+                    <!-- Informações de Contato -->
+                    <div class="contact-info">
+                        <h3>Nossas Informações</h3>
+                        <p><strong>Endereço:</strong><br>Rua dos Animais Felizes, 123<br>Bairro Petrópolis, Cidade - UF</p>
+                        <p><strong>Telefone:</strong><br>(XX) 99999-8888</p>
+                        <p><strong>Email:</strong><br>contato@petshop.com.br</p>
+                        <p><strong>Horário de Funcionamento:</strong><br>Seg - Sáb: 8h às 19h</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2024 PetShop. Todos os direitos reservados. Feito com ❤️ para os pets.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Incorporado -->
+    <script>
+        // Seleciona os elementos do DOM
+        const hamburger = document.querySelector('.hamburger-menu');
+        const navLinks = document.querySelector('.nav-links');
+        const navLinksItems = document.querySelectorAll('.nav-links li a');
+
+        // Função para fechar o menu
+        function closeMenu() {
+            hamburger.classList.remove('active');
+            navLinks.classList.remove('active');
+            hamburger.setAttribute('aria-expanded', 'false');
+        }
+
+        // Adiciona o evento de clique ao botão hamburger
+        hamburger.addEventListener('click', () => {
+            // Alterna a classe 'active' no botão e no menu de navegação
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+
+            // Atualiza o atributo ARIA para acessibilidade
+            const isExpanded = hamburger.classList.contains('active');
+            hamburger.setAttribute('aria-expanded', isExpanded);
+        });
+
+        // Adiciona evento de clique a cada link do menu para fechar o menu ao navegar
+        navLinksItems.forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+    </script>
+
+</body>
+</html>
